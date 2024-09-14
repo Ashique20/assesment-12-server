@@ -80,7 +80,6 @@ async function run() {
       const cursor = userCollection.find(query);
       const result = await cursor.toArray();
       res.send(result);
-      // console.log(result)
     });
 
 
