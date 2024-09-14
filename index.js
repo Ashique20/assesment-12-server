@@ -31,23 +31,23 @@ async function run() {
     const fundCollection = client.db('bloodDb').collection('funds')
     const blogCollection = client.db('bloodDb').collection('blogs')
 
-    const verifyToken=(req,res,next)=>{
-      console.log(req.headers.authorization)
-      if(!req?.headers?.authorization){
-        return res.status(401).send({message:'forbidden access'})
-      }
-      const token = req.headers.authorization.split(' ')[1]
-    jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
-      if(err){
-        return res.status(401).send({message:'forbidden access'})
-      }
-      req.decoded =decoded
-      next()
-    })
+    // const verifyToken=(req,res,next)=>{
+    //   console.log(req.headers.authorization)
+    //   if(!req?.headers?.authorization){
+    //     return res.status(401).send({message:'forbidden access'})
+    //   }
+    //   const token = req.headers.authorization.split(' ')[1]
+    // jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
+    //   if(err){
+    //     return res.status(401).send({message:'forbidden access'})
+    //   }
+    //   req.decoded =decoded
+    //   next()
+    // })
 
 
    
-    }
+    // }
 
     app.post('/jwt', async (req, res) => {
       const user = req.body
@@ -55,7 +55,7 @@ async function run() {
       res.send({token})
     })
 
-    app.get("/users",verifyToken,  async (req, res) => {
+    app.get("/users",  async (req, res) => {
       
      
       let query = {};
@@ -301,11 +301,10 @@ async function run() {
       res.send(result)
     })
 
-
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
+    // await client.connect();
+    // // Send a ping to confirm a successful connection
+    // await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
