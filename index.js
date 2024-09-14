@@ -155,7 +155,6 @@ async function run() {
         updateDoc.$set.role = body.role;
       }
 
-      // Update the user
       const result = await userCollection.updateOne(filter, updateDoc);
 
       if (result.modifiedCount > 0) {
