@@ -158,7 +158,6 @@ async function run() {
       // Update the user
       const result = await userCollection.updateOne(filter, updateDoc);
 
-      // Check if any document was modified and respond accordingly
       if (result.modifiedCount > 0) {
         res.status(200).send({ message: 'User updated successfully', result });
       } else {
