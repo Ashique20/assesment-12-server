@@ -92,10 +92,10 @@ async function run() {
       res.send(result)
 
     })
-    app.get('/blogs', async (req, res) => {
-      const result = await blogCollection.find({}).toArray()
-      res.send(result)
-    })
+    // app.get('/blogs', async (req, res) => {
+    //   const result = await blogCollection.find({}).toArray()
+    //   res.send(result)
+    // })
 
     app.patch('/blogs/:id', async (req, res) => {
       const body = req.body;
