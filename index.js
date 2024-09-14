@@ -119,7 +119,7 @@ async function run() {
     })
 
     app.post("/create-payment-intent", async (req, res) => {
-      const { amount } = req.body; // Accept `amount` instead of `price`
+      const { amount } = req.body; 
 
       if (!amount || isNaN(amount)) {
         return res.status(400).send({ error: "Invalid amount" });
