@@ -73,9 +73,9 @@ async function run() {
         query.blood_group = req.query.blood;
       }
 
-      if (query.email && req.decoded.email !== query.email) {
-        return res.status(403).send({ message: "Forbidden access: email mismatch" });
-      }
+      // if (query.email && req.decoded.email !== query.email) {
+      //   return res.status(403).send({ message: "Forbidden access: email mismatch" });
+      // }
 
       console.log(query.email,'email')
       const cursor = userCollection.find(query);
