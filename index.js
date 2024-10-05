@@ -29,6 +29,7 @@ async function run() {
     const donationCollection = client.db('bloodDb').collection('donations')
     const fundCollection = client.db('bloodDb').collection('funds')
     const blogCollection = client.db('bloodDb').collection('blogs')
+    const chatCollection = client.db('bloodDb').collection('chats')
 
     const verifyToken=(req,res,next)=>{
       console.log(req.headers.authorization)
@@ -295,6 +296,18 @@ async function run() {
       const body = req.body
       const result = await fundCollection.insertOne(body)
       res.send(result)
+    })
+
+    app.post('/chat',async(req,res)=>{
+      const body = req.body
+      const result = await chatCollection.insertOne(body)
+      res.send(result)
+    })
+
+    app.get('/chat',async(req,res)=>{
+      const result = await chatCollection.find({}).toArray()
+      res.send(result)
+
     })
 
     // Connect the client to the server	(optional starting in v4.7)
